@@ -1,14 +1,14 @@
-class Tablero2
+class Tablero
 	attr_accessor :fichas, :tablero, :n, :fichas_jugadores, :turnos
 	def initialize(jugadores)
 		generar_fichas # Genera las 28 fichas que tiene el dominó
-		@historial
+		@historial 
 		@n = jugadores.length # Número de jugadores
 		definir_turnos # Define la variable @turnos
 		@fichas_jugadores = Hash.new
 		asignar_fichas # Asigna las fichas a cada jugador
 		@jugadores = jugadores
-		@tablero = Array.new
+		@tablero = Array.new  
 		@paso = 0
 	end
 	def generar_fichas
