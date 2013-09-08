@@ -46,7 +46,7 @@ class Tablero2
 	def juego
 		while !fin_del_juego
 			@turnos.each do |t|
-				ficha = @jugadores[t-1].jugar(@fichas_jugadores[t], @tablero) # ficha es un hash como sigue: {:id_ficha => 22, :posicion => 0, :orientacion => 1 }
+				ficha = @jugadores[t-1].jugar(@fichas_jugadores[t], @tablero, @turnos) # ficha es un hash como sigue: {:id_ficha => 22, :posicion => 0, :orientacion => 1 }
 				if @fichas_jugadores[t].include?(@fichas[ficha[:id_ficha]])
 					exito = turno(ficha, t)
 					if exito
@@ -95,7 +95,7 @@ class Tablero2
 			if posicion == 0
 				if izq_ficha_izq == f[1]
 					@tablero.unshift({:id_ficha => id_ficha, :orientacion => orientacion, :id_jugador => id_jugador})
-					@fichas_jugadores[id_jugador].delete[@fichas[id_ficha]]
+					@fichas_jugadores[id_jugador].delete(@fichas[id_ficha])
 					return true
 				else
 					return false
@@ -103,7 +103,7 @@ class Tablero2
 			elsif posicion == 1
 				if der_ficha_der == f[0]
 					@tablero << {:id_ficha => id_ficha, :orientacion => orientacion, :id_jugador => id_jugador}
-					@fichas_jugadores[id_jugador].delete([@fichas[id_ficha]])
+					@fichas_jugadores[id_jugador].delete(@fichas[id_ficha])
 					return true
 				else
 					return false
@@ -111,7 +111,7 @@ class Tablero2
 			end
 		else
 			@tablero << {:id_ficha => id_ficha, :orientacion => orientacion, :id_jugador => id_jugador}
-			@fichas_jugadores[id_jugador].delete([@fichas[id_ficha]])
+			@fichas_jugadores[id_jugador].delete(@fichas[id_ficha])
 			return true
 		end
 	end

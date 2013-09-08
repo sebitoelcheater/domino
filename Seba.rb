@@ -1,7 +1,23 @@
 class Seba
 	def initialize
+		i = 6
+		fichas = []
+		until i < 0
+			k = i
+			until k < 0 do
+				fichas << [i,k]
+				k -= 1
+			end
+			i -= 1
+		end
+		@fichas = fichas.reverse
 	end
-	def jugar(mis_fichas, tablero)
-		return {:id_ficha => 22, :posicion => 0, :orientacion => 1 }
+	def jugar(mis_fichas, tablero, turnos)
+		if tablero.empty?
+			return {:id_ficha => 11 , :posicion => 0, :orientacion => 1 }
+		end
+		ficha_der = @fichas[tablero.last[:id_ficha]][(tablero.last[:orientacion]-1).abs]
+		ficha_izq = @fichas[tablero.first[:id_ficha]][tablero.first[:orientacion]]
+		return {:id_ficha => 2, :posicion => 0, :orientacion => 1 }
 	end
 end
