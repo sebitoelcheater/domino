@@ -80,7 +80,7 @@ class Tablero2
 		@turnos = turnos
 	end
 	def fin_del_juego
-		return @paso > @n
+		return @paso >= @n
 	end
 	def turno(ficha, id_jugador)
 		id_ficha = ficha[:id_ficha]
