@@ -1,6 +1,7 @@
 class Tablero2
 	attr_accessor :fichas, :tablero, :n, :fichas_jugadores, :turnos
 	def initialize(jugadores)
+		@pasos={1=>[],2=>[],3=>[],1=>[]}
 		generar_fichas # Genera las 28 fichas que tiene el dominó
 		@historial
 		@n = jugadores.length # Número de jugadores
@@ -53,6 +54,7 @@ class Tablero2
 						@paso = 0
 						puts "El jugador "+t.to_s+" no pasa."
 					else
+						pasos(t,@tablero)
 						@paso += 1
 						puts "El jugador "+t.to_s+" pasa."
 					end
@@ -136,7 +138,14 @@ class Tablero2
 		partida = []
 		@tablero.each do |turno|
 			partida << ficha_orientada(@fichas[turno[:id_ficha]],turno[:orientacion])
-		end
+	end
 		return partida
 	end
+	def pasos(jugador,tablero)
+		@pasos[jugador] << ficha_orientada(@fichas[tablero[tablero.length-1][:id_ficha]],@fichas[tablero[tablero.length-1][:orientacion]])[1]
+		@pasos[jugador] << ficha_orientada(@fichas[tablero[0][:id_ficha]],@fichas[tablero[tablero.length-1][:orientacion]])[0]
+	end
 end
+
+
+
