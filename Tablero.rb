@@ -46,7 +46,7 @@ class Tablero
 	def juego
 		while !fin_del_juego
 			@turnos.each do |t|
-				ficha = @jugadores[t-1].jugar(@fichas_jugadores[t], @tablero, @turnos) # ficha es un hash como sigue: {:id_ficha => 22, :posicion => 0, :orientacion => 1 }
+				ficha = @jugadores[t-1].jugar(@fichas_jugadores[t], @tablero, @turnos, nil, t) # ficha es un hash como sigue: {:id_ficha => 22, :posicion => 0, :orientacion => 1 }
 				if @fichas_jugadores[t].include?(@fichas[ficha[:id_ficha]])
 					exito = turno(ficha, t)
 					if exito
