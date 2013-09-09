@@ -12,6 +12,7 @@ class Seba
 		factible = factibles(mis_fichas, tablero, ficha_izq, ficha_der)
 		conteo = contar_fichas(factible)
 		n = maximo(conteo) # el número que más se repite
+		
 		return {:id_ficha => 2, :posicion => 0, :orientacion => 1 }
 	end
 	def generar_fichas
@@ -42,6 +43,7 @@ class Seba
 			contabilidad[ficha[0]] += 1
 			contabilidad[ficha[1]] += 1
 		end
+		return contabilidad
 	end
 	def contar_tablero(tablero)
 		contabilidad = Array.new(7){ |i| 0 }
